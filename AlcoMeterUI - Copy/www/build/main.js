@@ -71,7 +71,7 @@ var TabsPage = (function () {
         this.tab3Root = __WEBPACK_IMPORTED_MODULE_2__contact_contact__["a" /* ContactPage */];
     }
     TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Viktor\Desktop\blank\src\pages\tabs\tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"C:\Users\Viktor\Desktop\blank\src\pages\tabs\tabs.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Viktor\Desktop\GITKRAKENCOMMIT\FinlandInternationalProject2ea2Groep2AlcoMeter\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\tabs\tabs.html"*/'<ion-tabs>\n\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"C:\Users\Viktor\Desktop\GITKRAKENCOMMIT\FinlandInternationalProject2ea2Groep2AlcoMeter\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\tabs\tabs.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], TabsPage);
@@ -106,7 +106,7 @@ var ContactPage = (function () {
     }
     ContactPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-contact',template:/*ion-inline-start:"C:\Users\Viktor\Desktop\blank\src\pages\contact\contact.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Contact\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n    <ion-item>\n      <ion-icon name="ionic" item-start></ion-icon>\n      @ionicframework\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Users\Viktor\Desktop\blank\src\pages\contact\contact.html"*/
+            selector: 'page-contact',template:/*ion-inline-start:"C:\Users\Viktor\Desktop\GITKRAKENCOMMIT\FinlandInternationalProject2ea2Groep2AlcoMeter\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\contact\contact.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Contact\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n\n    <ion-item>\n\n      <ion-icon name="ionic" item-start></ion-icon>\n\n      @ionicframework\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Viktor\Desktop\GITKRAKENCOMMIT\FinlandInternationalProject2ea2Groep2AlcoMeter\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\contact\contact.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
     ], ContactPage);
@@ -141,7 +141,7 @@ var HomePage = (function () {
     }
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"C:\Users\Viktor\Desktop\blank\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Welcome to Alcometer</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-card>\n        <img src="https://images.unsplash.com/photo-1474500257816-6f941168c7e7?ixlib=rb-0.3.5&s=15cfd4b2ed2bf9afeead872f17e39749&auto=format&fit=crop&w=1050&q=80"/>\n    </ion-card>\n    \n    \n  <button [navPush]="rs" ion-button full>Start Test</button>\n</ion-content>\n'/*ion-inline-end:"C:\Users\Viktor\Desktop\blank\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\Viktor\Desktop\GITKRAKENCOMMIT\FinlandInternationalProject2ea2Groep2AlcoMeter\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Welcome to Alcometer</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n    <ion-card>\n\n        <img src="https://images.unsplash.com/photo-1474500257816-6f941168c7e7?ixlib=rb-0.3.5&s=15cfd4b2ed2bf9afeead872f17e39749&auto=format&fit=crop&w=1050&q=80"/>\n\n    </ion-card>\n\n    \n\n    \n\n  <button [navPush]="rs" ion-button full>Start Test</button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Viktor\Desktop\GITKRAKENCOMMIT\FinlandInternationalProject2ea2Groep2AlcoMeter\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], HomePage);
@@ -274,7 +274,7 @@ var MyApp = (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Viktor\Desktop\blank\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\Users\Viktor\Desktop\blank\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\Viktor\Desktop\GITKRAKENCOMMIT\FinlandInternationalProject2ea2Groep2AlcoMeter\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\Viktor\Desktop\GITKRAKENCOMMIT\FinlandInternationalProject2ea2Groep2AlcoMeter\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
@@ -309,7 +309,7 @@ var AboutPage = (function () {
     }
     AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-about',template:/*ion-inline-start:"C:\Users\Viktor\Desktop\blank\src\pages\about\about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-slides pager>\n\n  <ion-slide style="background-image: url(../assets/imgs/Slide1.png)">\n\n\n  </ion-slide>\n\n  <ion-slide style="background-color: blue">\n    <h2>Slide 2</h2>\n  </ion-slide>\n\n  <ion-slide style="background-color: red">\n    <h2>Slide 3</h2>\n  </ion-slide>\n\n</ion-slides>\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\Viktor\Desktop\blank\src\pages\about\about.html"*/
+            selector: 'page-about',template:/*ion-inline-start:"C:\Users\Viktor\Desktop\GITKRAKENCOMMIT\FinlandInternationalProject2ea2Groep2AlcoMeter\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\about\about.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      About\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-slides pager>\n\n\n\n  <ion-slide style="background-image: url(../assets/imgs/Slide1.png)">\n\n  </ion-slide>\n\n\n\n  <ion-slide style="background-image: url(../assets/imgs/Slide2.png)">\n\n  </ion-slide>\n\n\n\n  <ion-slide style="background-image: url(../assets/imgs/Slide3.png)">\n\n  </ion-slide>\n\n\n\n</ion-slides>\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Viktor\Desktop\GITKRAKENCOMMIT\FinlandInternationalProject2ea2Groep2AlcoMeter\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\about\about.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
     ], AboutPage);
