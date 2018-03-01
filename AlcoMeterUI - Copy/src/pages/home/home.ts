@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ResultPage } from '../result/result';
 import { AboutPage } from '../about/about';
+import { DatabasePage } from '../database/database';
 
 @Component({
   selector: 'page-home',
@@ -9,7 +10,7 @@ import { AboutPage } from '../about/about';
 })
 export class HomePage {
 
-  rs = AboutPage;
+  rs = DatabasePage;
 
   constructor(){
 
