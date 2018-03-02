@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 /**
  * Generated class for the DatabasePage page.
  *
@@ -14,7 +16,8 @@ var userID:Number;
 var gender:String;
 var location:String;
 var alcoholLevel:Number;
-var date: Date;
+
+
 
 @IonicPage()
 @Component({
@@ -22,41 +25,53 @@ var date: Date;
   templateUrl: 'database.html',
 })
 export class DatabasePage {
-  
+  items: Observable<any[]>;
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
-  
+    
+    
   }
 
   addItem(){
-    readingID++;
-    userReadingID++;
-    userID = 1;
-    age = Math.floor(Math.random()*99) + 16;
-    var gendernum = Math.floor(Math.random()*2) + 1
-    switch(gendernum){
-      case 1: gender = 'Male';
-      break;
-      case 2: gender = 'Female';
-      break;
-    }
-    var today = new Date();
-    var date = today.getDate();
-    var month = today.getMonth()+1;
-    var year = today.getFullYear();
-    var hour = today.getHours();
-    var minutes = today.getMinutes();
-    if(date < 10){date = ("0" + date).slice(-2);}
-    if(month < 10){month = ("0" +month).slice(-2);}
-    if(minutes < 10){minutes = ("0" +minutes).slice(-2);}
-    if(hour < 10){hour = ("0" +hour).slice(-2);}
+    
+    readingID++;                                      //ReadingID = ID van alle readings, deze moet dynamisch nog gelinkt worden met firebase
+    userReadingID++;                                  //userReadingID = ID van alle readings van deze user zelf, deze moet dynamisch nog gelinkt worden met firebase
+    userID = 1;                                       //userID = ID van de user, deze moet dynamisch nog gelinkt worden met firebase
+    age = Math.floor(Math.random()*99) + 16;            //
+    var gendernum = Math.floor(Math.random()*2) + 1     //
+    switch(gendernum){                                  //
+      case 1: gender = 'Male';                          //
+      break;                                            //
+      case 2: gender = 'Female';                        // Random waarden ter simulatie.
+      break;                                            //
+    }                                                   //
+                                                        //
+    location = 'Belgium';                               //
+    var alcoholLeveltemp:Number = Math.random()*1;      //
+    alcoholLevel = +alcoholLeveltemp.toFixed(1);        //
+
+
+    var today = new Date();                                                                                         //
+    var date = today.getDate();                                                                                     //
+    var month = today.getMonth()+1;                                                                                 //
+    var year = today.getFullYear();                                                                                 //
+    var hour = today.getHours();                                                                                    //
+    var minutes = today.getMinutes();                                                                               //
+    var seconds = today.getSeconds();                                                                               //
+    var ms = today.getMilliseconds();                                                                               //  Datum en tijd verkrijgen en 
+    if(date < 10){var daystring = ("0" + date).slice(-2);}else{daystring = date.toString()}                         //  deze omzetten in het dd/mm/yyyy formaat.
+    if(month < 10){var monthstring = ("0" +month).slice(-2);}else{monthstring = month.toString();}                  //  tijd onzetten in get HH:MM formaat.
+    if(minutes < 10){var minutesstring = ("0" +minutes).slice(-2);}else{ minutesstring = minutes.toString();}       //
+    if(hour < 10){var hourstring = ("0" +hour).slice(-2);}else{ hourstring = hour.toString();}                      //  sortingMS is het aantal miliseconden tussen
+                                                                                                                    //  het verkrijgen van de datum en 01/01/1970 00:00.
+    var datestring = daystring + '/' + monthstring +'/' + year;                                                     //  Deze waarde is puur voor te kunnen sorteren.                                 
+    var timestring = hourstring + ':' + minutesstring;                                                              //
+    var sortingms = Date.UTC(year,month,date,hour,minutes,seconds,ms);                                              //
+    
 
     
+    this.firebaseProvider.addItem(userID,readingID, userReadingID, age, gender, location, alcoholLevel, datestring, timestring, sortingms );
+    var items = this.firebaseProvider.getList();
     
-
-    location = 'Belgium';
-    var alcoholLeveltemp:Number = Math.random()*1
-    alcoholLevel = +alcoholLeveltemp.toFixed(1);
-    this.firebaseProvider.addItem(userID,readingID, userReadingID, age, gender, location, alcoholLevel, date, month, year, hour, minutes )
   }
 
   ionViewDidLoad() {

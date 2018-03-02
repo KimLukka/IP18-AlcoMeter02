@@ -1,13 +1,13 @@
 webpackJsonp([2],{
 
-/***/ 132:
+/***/ 133:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DatabasePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_firebase_firebase__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_firebase_firebase__ = __webpack_require__(188);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -33,7 +33,6 @@ var userID;
 var gender;
 var location;
 var alcoholLevel;
-var date;
 var DatabasePage = (function () {
     function DatabasePage(navCtrl, navParams, firebaseProvider) {
         this.navCtrl = navCtrl;
@@ -41,48 +40,68 @@ var DatabasePage = (function () {
         this.firebaseProvider = firebaseProvider;
     }
     DatabasePage.prototype.addItem = function () {
-        readingID++;
-        userReadingID++;
-        userID = 1;
-        age = Math.floor(Math.random() * 99) + 16;
-        var gendernum = Math.floor(Math.random() * 2) + 1;
+        readingID++; //ReadingID = ID van alle readings, deze moet dynamisch nog gelinkt worden met firebase
+        userReadingID++; //userReadingID = ID van alle readings van deze user zelf, deze moet dynamisch nog gelinkt worden met firebase
+        userID = 1; //userID = ID van de user, deze moet dynamisch nog gelinkt worden met firebase
+        age = Math.floor(Math.random() * 99) + 16; //
+        var gendernum = Math.floor(Math.random() * 2) + 1; //
         switch (gendernum) {
             case 1:
-                gender = 'Male';
-                break;
+                gender = 'Male'; //
+                break; //
             case 2:
-                gender = 'Female';
-                break;
-        }
-        var today = new Date();
-        var date = today.getDate();
-        var month = today.getMonth() + 1;
-        var year = today.getFullYear();
-        var hour = today.getHours();
-        var minutes = today.getMinutes();
+                gender = 'Female'; // Random waarden ter simulatie.
+                break; //
+        } //
+        //
+        location = 'Belgium'; //
+        var alcoholLeveltemp = Math.random() * 1; //
+        alcoholLevel = +alcoholLeveltemp.toFixed(1); //
+        var today = new Date(); //
+        var date = today.getDate(); //
+        var month = today.getMonth() + 1; //
+        var year = today.getFullYear(); //
+        var hour = today.getHours(); //
+        var minutes = today.getMinutes(); //
+        var seconds = today.getSeconds(); //
+        var ms = today.getMilliseconds(); //  Datum en tijd verkrijgen en 
         if (date < 10) {
-            date = ("0" + date).slice(-2);
+            var daystring = ("0" + date).slice(-2);
         }
+        else {
+            daystring = date.toString();
+        } //  deze omzetten in het dd/mm/yyyy formaat.
         if (month < 10) {
-            month = ("0" + month).slice(-2);
+            var monthstring = ("0" + month).slice(-2);
         }
+        else {
+            monthstring = month.toString();
+        } //  tijd onzetten in get HH:MM formaat.
         if (minutes < 10) {
-            minutes = ("0" + minutes).slice(-2);
+            var minutesstring = ("0" + minutes).slice(-2);
         }
+        else {
+            minutesstring = minutes.toString();
+        } //
         if (hour < 10) {
-            hour = ("0" + hour).slice(-2);
+            var hourstring = ("0" + hour).slice(-2);
         }
-        location = 'Belgium';
-        var alcoholLeveltemp = Math.random() * 1;
-        alcoholLevel = +alcoholLeveltemp.toFixed(1);
-        this.firebaseProvider.addItem(userID, readingID, userReadingID, age, gender, location, alcoholLevel, date, month, year, hour, minutes);
+        else {
+            hourstring = hour.toString();
+        } //  sortingMS is het aantal miliseconden tussen
+        //  het verkrijgen van de datum en 01/01/1970 00:00.
+        var datestring = daystring + '/' + monthstring + '/' + year; //  Deze waarde is puur voor te kunnen sorteren.                                 
+        var timestring = hourstring + ':' + minutesstring; //
+        var sortingms = Date.UTC(year, month, date, hour, minutes, seconds, ms); //
+        this.firebaseProvider.addItem(userID, readingID, userReadingID, age, gender, location, alcoholLevel, datestring, timestring, sortingms);
+        var items = this.firebaseProvider.getList();
     };
     DatabasePage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad DatabasePage');
     };
     DatabasePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-database',template:/*ion-inline-start:"E:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\database\database.html"*/'<!--\n  Generated template for the DatabasePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>database</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <button ion-button (click)="addItem()">Add!</button>\n</ion-content>\n'/*ion-inline-end:"E:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\database\database.html"*/,
+            selector: 'page-database',template:/*ion-inline-start:"C:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\database\database.html"*/'<!--\n\n  Generated template for the DatabasePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>database</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n    <ul>\n\n        <li>test</li>\n\n        <li *ngFor="let item of items | async">\n\n           {{ item | json }}\n\n        </li>\n\n      </ul>\n\n  <button ion-button (click)="addItem()">Add!</button>\n\n</ion-content>\n\n\n\n\n\n'/*ion-inline-end:"C:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\database\database.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_firebase_firebase__["a" /* FirebaseProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_firebase_firebase__["a" /* FirebaseProvider */]) === "function" && _c || Object])
     ], DatabasePage);
@@ -94,7 +113,7 @@ var DatabasePage = (function () {
 
 /***/ }),
 
-/***/ 144:
+/***/ 145:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -107,11 +126,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 144;
+webpackEmptyAsyncContext.id = 145;
 
 /***/ }),
 
-/***/ 186:
+/***/ 187:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -135,18 +154,18 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 186;
+webpackAsyncContext.id = 187;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 187:
+/***/ 188:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FirebaseProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(101);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -169,21 +188,25 @@ var FirebaseProvider = (function () {
         this.db = db;
         console.log('Hello FirebaseProvider Provider');
     }
-    FirebaseProvider.prototype.addItem = function (userID, readingID, userReadingID, age, gender, location, alcoholLevel, date, month, year, hour, minutes) {
+    FirebaseProvider.prototype.addItem = function (userID, readingID, userReadingID, age, gender, location, alcoholLevel, datestring, timestring, sortingms) {
         var itemRef = this.db.database.ref('Readings/' + readingID).set({
-            age: age, gender: gender, location: location, alcoholLevel: alcoholLevel, date: date, month: month, year: year, hour: hour, minutes: minutes
-        });
+            date: datestring, time: timestring, age: age, gender: gender, location: location, alcoholLevel: alcoholLevel, sortingms: sortingms // adds Reading into general readingsdatabase 
+        }); //
         var itemRef2 = this.db.database.ref('Users/' + userID + '/' + userReadingID).set({
-            date: date, month: month, year: year, hour: hour, minutes: minutes, location: location, alcoholLevel: alcoholLevel
-        });
+            date: datestring, time: timestring, location: location, alcoholLevel: alcoholLevel, sortingms: sortingms // adds Reading into user specific database
+        }); //
         // itemRef.set({userID: userID, age:age, gender:gender, location:location, alcoholLevel:alcoholLevel})
+    };
+    FirebaseProvider.prototype.getList = function () {
+        var items;
+        items = this.db.list('Readings').valueChanges();
+        return items;
     };
     FirebaseProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
     ], FirebaseProvider);
     return FirebaseProvider;
-    var _a;
 }());
 
 //# sourceMappingURL=firebase.js.map
@@ -219,7 +242,7 @@ var TabsPage = (function () {
         this.tab3Root = __WEBPACK_IMPORTED_MODULE_2__contact_contact__["a" /* ContactPage */];
     }
     TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"E:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\tabs\tabs.html"*/'<ion-tabs>\n\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"E:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\tabs\tabs.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\tabs\tabs.html"*/'<ion-tabs>\n\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>\n\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"C:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\tabs\tabs.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], TabsPage);
@@ -254,7 +277,7 @@ var AboutPage = (function () {
     }
     AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-about',template:/*ion-inline-start:"E:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\about\about.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      About\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-slides pager>\n\n\n\n  <ion-slide style="background-image: url(../assets/imgs/Slide1.png)">\n\n  </ion-slide>\n\n\n\n  <ion-slide style="background-image: url(../assets/imgs/Slide2.png)">\n\n  </ion-slide>\n\n\n\n  <ion-slide style="background-image: url(../assets/imgs/Slide3.png)">\n\n  </ion-slide>\n\n\n\n</ion-slides>\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\about\about.html"*/
+            selector: 'page-about',template:/*ion-inline-start:"C:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\about\about.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      About\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-slides pager>\n\n\n\n  <ion-slide style="background-image: url(../assets/imgs/Slide1.png)">\n\n  </ion-slide>\n\n\n\n  <ion-slide style="background-image: url(../assets/imgs/Slide2.png)">\n\n  </ion-slide>\n\n\n\n  <ion-slide style="background-image: url(../assets/imgs/Slide3.png)">\n\n  </ion-slide>\n\n\n\n</ion-slides>\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\about\about.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
     ], AboutPage);
@@ -289,7 +312,7 @@ var ContactPage = (function () {
     }
     ContactPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-contact',template:/*ion-inline-start:"E:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\contact\contact.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Contact\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n\n    <ion-item>\n\n      <ion-icon name="ionic" item-start></ion-icon>\n\n      @ionicframework\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\contact\contact.html"*/
+            selector: 'page-contact',template:/*ion-inline-start:"C:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\contact\contact.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Contact\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n\n    <ion-item>\n\n      <ion-icon name="ionic" item-start></ion-icon>\n\n      @ionicframework\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\contact\contact.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
     ], ContactPage);
@@ -306,7 +329,7 @@ var ContactPage = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__database_database__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__database_database__ = __webpack_require__(133);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -324,7 +347,7 @@ var HomePage = (function () {
     }
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"E:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Welcome to Alcometer</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n    <ion-card>\n\n        <img src="https://images.unsplash.com/photo-1474500257816-6f941168c7e7?ixlib=rb-0.3.5&s=15cfd4b2ed2bf9afeead872f17e39749&auto=format&fit=crop&w=1050&q=80"/>\n\n    </ion-card>\n\n    \n\n    \n\n  <button [navPush]="rs" ion-button full>Start Test</button>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Welcome to Alcometer</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n    <ion-card>\n\n        <img src="https://images.unsplash.com/photo-1474500257816-6f941168c7e7?ixlib=rb-0.3.5&s=15cfd4b2ed2bf9afeead872f17e39749&auto=format&fit=crop&w=1050&q=80"/>\n\n    </ion-card>\n\n    \n\n    \n\n  <button [navPush]="rs" ion-button full>Start Test</button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], HomePage);
@@ -362,13 +385,13 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_contact_contact__ = __webpack_require__(279);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(280);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__ = __webpack_require__(277);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_database_database__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_database_database__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__ = __webpack_require__(273);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_splash_screen__ = __webpack_require__(276);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_http__ = __webpack_require__(445);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_angularfire2_database__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_angularfire2_database__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_angularfire2__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_firebase_firebase__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_firebase_firebase__ = __webpack_require__(188);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -482,7 +505,7 @@ var MyApp = (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"E:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"E:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\robin\Desktop\IP\IP18-AlcoMeter02\AlcoMeterUI - Copy\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);

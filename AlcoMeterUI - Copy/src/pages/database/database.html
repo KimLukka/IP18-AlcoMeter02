@@ -14,5 +14,13 @@
 
 
 <ion-content padding>
+    <ul>
+        <li>test</li>
+        <li *ngFor="let item of items | async">
+           {{ item | json }}
+        </li>
+      </ul>
   <button ion-button (click)="addItem()">Add!</button>
 </ion-content>
+
+
