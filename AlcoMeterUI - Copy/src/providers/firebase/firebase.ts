@@ -17,12 +17,12 @@ export class FirebaseProvider {
     console.log('Hello FirebaseProvider Provider');
   }
 
-  addItem(userID,readingID, userReadingID, age, gender, location, alcoholLevel, datestring, timestring , sortingms){
-    const itemRef = this.db.database.ref('Readings/' + readingID).set({                                                               //
+  addItem(userID, age, gender, location, alcoholLevel, datestring, timestring , sortingms){
+    const itemRef = this.db.database.ref('ReadingDatabase/Readings/').push().set({                                                                    //
       date : datestring, time: timestring, age:age, gender:gender, location:location, alcoholLevel:alcoholLevel, sortingms:sortingms  // adds Reading into general readingsdatabase 
     })                                                                                                                                //
 
-    const itemRef2 = this.db.database.ref('Users/' + userID + '/' + userReadingID).set({          //
+    const itemRef2 = this.db.database.ref('ReadingDatabase/Users/' + userID + '/').push().set({                   //
       date: datestring,time:timestring, location:location, alcoholLevel:alcoholLevel, sortingms   // adds Reading into user specific database
     })                                                                                            //
     

@@ -9,8 +9,7 @@ import { Observable } from 'rxjs/Observable';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var readingID = 0
-var userReadingID = 0;
+
 var age:Number;
 var userID:Number;
 var gender:String;
@@ -33,9 +32,8 @@ export class DatabasePage {
 
   addItem(){
     
-    readingID++;                                      //ReadingID = ID van alle readings, deze moet dynamisch nog gelinkt worden met firebase
-    userReadingID++;                                  //userReadingID = ID van alle readings van deze user zelf, deze moet dynamisch nog gelinkt worden met firebase
-    userID = 1;                                       //userID = ID van de user, deze moet dynamisch nog gelinkt worden met firebase
+                                      
+    userID = 1;                                         //userID = ID van de user, deze moet dynamisch nog gelinkt worden met firebase
     age = Math.floor(Math.random()*99) + 16;            //
     var gendernum = Math.floor(Math.random()*2) + 1     //
     switch(gendernum){                                  //
@@ -69,7 +67,7 @@ export class DatabasePage {
     
 
     
-    this.firebaseProvider.addItem(userID,readingID, userReadingID, age, gender, location, alcoholLevel, datestring, timestring, sortingms );
+    this.firebaseProvider.addItem(userID, age, gender, location, alcoholLevel, datestring, timestring, sortingms );
     var items = this.firebaseProvider.getList();
     
   }
