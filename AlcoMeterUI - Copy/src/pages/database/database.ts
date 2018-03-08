@@ -11,10 +11,18 @@ import { Observable } from 'rxjs/Observable';
  */
 
 var age:Number;
+var weight:Number;
+var height:Number;
 var userID:Number;
 var gender:String;
 var location:String;
 var alcoholLevel:Number;
+var sendData:boolean;
+var birthday:Number;
+var birthMonth:Number;
+var birthYear:Number;
+var firstName:String;
+var lastName:String;
 
 
 
@@ -25,6 +33,10 @@ var alcoholLevel:Number;
 })
 export class DatabasePage {
   items: Observable<any[]>;
+  gender = ".";
+  weight = -1;
+  height = -1;
+  userID = -1;
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseProvider: FirebaseProvider) {
     
     
@@ -69,6 +81,50 @@ export class DatabasePage {
     this.firebaseProvider.addItem(userID, age, gender, location, alcoholLevel, datestring, timestring, sortingms );
     var items = this.firebaseProvider.getList();
     
+  }
+
+  addUser(){
+
+    age = Math.floor(Math.random()*83) + 16;            //
+                                                        //
+    var genderNum = Math.floor(Math.random()*2)+1;      //
+    switch(genderNum){                                  //
+      case 1: gender = 'Male';                          //
+      break;                                            //
+      case 2: gender = 'Female';                        // Random values for simulation
+      break;                                            //
+    }                                                   //
+                                                        //
+    var sendDataNum = Math.floor(Math.random()*2)+1;    //
+    switch(sendDataNum){                                //
+      case 1: sendData = true;                          //
+      break;                                            //
+      case 2: sendData = false;                         // 
+      break;                                            //
+    }                                                   //
+                                                        //
+    birthday = Math.floor(Math.random()*31);            //
+    birthMonth = Math.floor(Math.random()*12);          //
+    birthYear = Math.floor(Math.random()* 84) +1918;    //
+                                                        //
+    height = Math.floor(Math.random()* 90) +120;        //
+    weight = Math.floor(Math.random()* 90) +50;         //
+
+    
+
+    this.firebaseProvider.addUser(birthday,birthMonth,birthYear,gender,weight,height,"Test","User",sendData, "TestUser@");
+
+  }
+
+  updateUser(){
+    var newHeight = 150;
+    var newWeight = 160;
+    var newUserID = 3;
+    var newGender = "male";
+
+    this.firebaseProvider.updateUser(newUserID,newHeight,newWeight,newGender);
+
+
   }
 
   ionViewDidLoad() {
