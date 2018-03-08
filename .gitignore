@@ -12,22 +12,22 @@ log.txt
 .vscode/
 npm-debug.log*
 
-AlcoMeterUI - Copy/.idea/
-AlcoMeterUI - Copy/.sourcemaps/
-AlcoMeterUI - Copy/.sass-cache/
-AlcoMeterUI - Copy/.tmp/
-AlcoMeterUI - Copy/.versions/
-AlcoMeterUI - Copy/coverage/
-AlcoMeterUI - Copy/dist/
-AlcoMeterUI - Copy/node_modules/
-AlcoMeterUI - Copy/tmp/
-AlcoMeterUI - Copy/temp/
-AlcoMeterUI - Copy/hooks/
-AlcoMeterUI - Copy/platforms/
-AlcoMeterUI - Copy/plugins/
-AlcoMeterUI - Copy/plugins/android.json
-AlcoMeterUI - Copy/plugins/ios.json
-AlcoMeterUI - Copy/www/
+.idea/
+.sourcemaps/
+.sass-cache/
+.tmp/
+.versions/
+coverage/
+dist/
+node_modules/
+tmp/
+temp/
+hooks/
+platforms/
+plugins/
+plugins/android.json
+plugins/ios.json
+www/
 $RECYCLE.BIN/
 
 .DS_Store
