@@ -38,7 +38,7 @@ export class FirebaseProvider {
     /*  this.db.database.ref('UserDatabase/userCount').once('value').then(function(snapshot){
        userID = 5;
      }) ;   */
-     var userID:number;     
+    var userID:number;     
     this.db.database.ref('UserDatabase/Users/UserCount').on('value', snapshot =>{
       userID = snapshot.val();
     }); 
