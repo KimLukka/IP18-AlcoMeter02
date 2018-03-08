@@ -25678,7 +25678,15 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
-page-about body {
-  width: auto;
+page-about ion-slide {
+  background-size: cover;
   height: auto;
+}
+
+page-contact .ios page-home .scroll-content, page-contact .md page-home .scroll-content {
+  background-color: #f4f4f4;
+}
+
+page-contact .ios page-home ion-card-header, page-contact .md page-home ion-card-header {
+  font-weight: bold;
 }
