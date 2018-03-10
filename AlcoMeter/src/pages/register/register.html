@@ -1,0 +1,26 @@
+<ion-content padding>
+    <ion-item>
+        <ion-label color="primary" stacked>E-mail</ion-label>
+        <ion-input [(ngModel)]="mail" type="email" placeholder="E-mail"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked>Password</ion-label>
+        <ion-input [(ngModel)]="pass" type="password" placeholder="Password"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label color="primary" stacked>Weight (kg)</ion-label>
+          <ion-input placeholder="Weight"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" stacked>Birth date</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="myDate" placeholder="dd/mm/yyyy"></ion-datetime>
+        </ion-item>
+        <ion-item>
+        <ion-label color="primary" stacked>Gender</ion-label>
+        <ion-select placeholder="Choose your gender" [(ngModel)]="gender">
+          <ion-option value="f">Female</ion-option>
+          <ion-option value="m">Male</ion-option>
+        </ion-select>
+      </ion-item>
+        <button ion-button full (click)="register()">Register</button>
+</ion-content>
