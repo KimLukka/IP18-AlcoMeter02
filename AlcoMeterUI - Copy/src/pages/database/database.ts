@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+import { RegisterPage } from '../register/register';
+import {SettingsPage} from '../settings/settings';
 /**
  * Generated class for the DatabasePage page.
  *
@@ -67,11 +69,13 @@ export class DatabasePage {
     
 
     
-    this.firebaseProvider.addItem(userID, age, gender, location, alcoholLevel, datestring, timestring, sortingms );
-    var items = this.firebaseProvider.getList();
-    
+    //this.firebaseProvider.addItem(userID, age, gender, location, alcoholLevel, datestring, timestring, sortingms );
+    //var items = this.firebaseProvider.getList();
+    this.navCtrl.push(RegisterPage);
   }
-
+  changeConfig(){
+    this.navCtrl.push(SettingsPage);
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad DatabasePage');
   }

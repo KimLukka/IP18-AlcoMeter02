@@ -17,6 +17,8 @@ import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { FirebaseProvider } from './../providers/firebase/firebase';
+import { RegisterPage } from '../pages/register/register';
+import { SettingsPage } from '../pages/settings/settings';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDp_N4w_BjClGfW9ZNmMOy3PZQL28WLTyI",
@@ -36,7 +38,9 @@ const firebaseConfig = {
     ContactPage,
     HomePage,
     TabsPage,
-    DatabasePage
+    DatabasePage,
+    RegisterPage,
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,9 @@ const firebaseConfig = {
     ContactPage,
     HomePage,
     TabsPage,
-    DatabasePage
+    DatabasePage,
+    RegisterPage,
+    SettingsPage
   ],
   providers: [
     StatusBar,
