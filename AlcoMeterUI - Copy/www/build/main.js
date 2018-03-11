@@ -174,6 +174,8 @@ module.exports = webpackAsyncContext;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FirebaseProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_take__ = __webpack_require__(452);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_take__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -183,6 +185,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 /*
@@ -195,15 +198,55 @@ var FirebaseProvider = (function () {
     function FirebaseProvider(db) {
         this.db = db;
         console.log('Hello FirebaseProvider Provider');
+        var userID;
+        this.db.database.ref('UserDatabase/Users/UserCount').on('value', function (snapshot) {
+            userID = snapshot.val();
+        });
     }
     FirebaseProvider.prototype.addItem = function (userID, age, gender, location, alcoholLevel, datestring, timestring, sortingms) {
         var itemRef = this.db.database.ref('ReadingDatabase/Readings/').push().set({
-            date: datestring, time: timestring, age: age, gender: gender, location: location, alcoholLevel: alcoholLevel, sortingms: sortingms // adds Reading into general readingsdatabase 
+            date: datestring, time: timestring, age: age, gender: gender,
+            location: location, alcoholLevel: alcoholLevel, sortingms: sortingms //  
         }); //
         var itemRef2 = this.db.database.ref('ReadingDatabase/Users/' + userID + '/').push().set({
             date: datestring, time: timestring, location: location, alcoholLevel: alcoholLevel, sortingms: sortingms // adds Reading into user specific database
         }); //
-        // itemRef.set({userID: userID, age:age, gender:gender, location:location, alcoholLevel:alcoholLevel})
+    };
+    FirebaseProvider.prototype.addUser = function (birthDay, birthMonth, birthYear, gender, weight, height, firstName, lastName, sendData, email) {
+        /*  this.db.database.ref('UserDatabase/userCount').once('value').then(function(snapshot){
+           userID = 5;
+         }) ;   */
+        var userID;
+        this.db.database.ref('UserDatabase/Users/UserCount').on('value', function (snapshot) {
+            userID = snapshot.val();
+        });
+        var itemRef = this.db.database.ref('UserDatabase/Users/' + userID).set({
+            firstName: firstName, lastName: lastName, gender: gender, weight: weight, height: height,
+            birthDay: birthDay, birthMonth: birthMonth, birthYear: birthYear, sendData: sendData,
+            userID: userID //
+        }); //
+        /*const itemRef = this.db.database.ref('UserDatabase/Users/' + email).set({                    //
+          firstName:firstName, lastName:lastName, gender:gender.toLowerCase, weight:weight, height:height,        // adds user into user database
+          birthDay:birthDay, birthMonth:birthMonth, birthYear:birthYear, sendData:sendData,           //
+          email:email                                                                               //
+        }) ;                                                                                          //
+        
+        */
+        userID++; // this is temp userID 
+        var itemRef2 = this.db.database.ref('UserDatabase/Users').update({ UserCount: userID }); //
+    };
+    FirebaseProvider.prototype.updateUser = function (userID, height, weight, gender) {
+        var userRef = this.db.database.ref('UserDatabase/Users');
+        var specificRef = userRef.child(userID);
+        if (height != -1) {
+            specificRef.update({ height: height });
+        }
+        if (weight != -1) {
+            specificRef.update({ weight: weight });
+        }
+        if (gender != ".") {
+            specificRef.update({ gender: gender });
+        }
     };
     FirebaseProvider.prototype.getList = function () {
         var items;
@@ -212,9 +255,10 @@ var FirebaseProvider = (function () {
     };
     FirebaseProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _a || Object])
     ], FirebaseProvider);
     return FirebaseProvider;
+    var _a;
 }());
 
 //# sourceMappingURL=firebase.js.map
